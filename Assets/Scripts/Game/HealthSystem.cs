@@ -9,6 +9,7 @@ public class HealthSystem : MonoBehaviour
 
     public int healthCount;
     public int defaultHealthCount;
+    public GameObject gameOverOverlay;
     // Initiate the Health system (reset health count)
     public void Init()
     {
@@ -16,11 +17,16 @@ public class HealthSystem : MonoBehaviour
         txt_healthCount.text = healthCount.ToString();
     }
 
+    public void ResetHealthCount() { 
+        healthCount = defaultHealthCount;
+        txt_healthCount.text = healthCount.ToString();
+    }
+
     // Lose health count
-    public void LoseHealth()
+    public void LoseHealth(int value = 1)
     {
         if (healthCount == 0) return;
-        healthCount--; 
+        healthCount -= value; 
         txt_healthCount.text = healthCount.ToString();
         CheckDeath();
     }
@@ -28,8 +34,9 @@ public class HealthSystem : MonoBehaviour
     public void CheckDeath()
     {
         if (healthCount > 0) return;
-        Debug.Log("You Lose");
-    }
+        gameOverOverlay.SetActive(true);
+        Time.timeScale = 0;
+}
 
     // Start is called before the first frame update
     void Start()

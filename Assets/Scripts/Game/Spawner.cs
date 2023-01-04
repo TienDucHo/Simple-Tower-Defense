@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Spawner : MonoBehaviour
 {
     // List of towers (prefab) that will instantiate
-    public List<GameObject> towers;
+    public List<GameObject> towerPrefabs;
 
     // List of towers (UI)
     public List<Image> towerUIs;
@@ -19,10 +19,18 @@ public class Spawner : MonoBehaviour
     // ID of tower to spawn
     int spawnID = -1;
 
-    // Spawn Points Tilemap
 
+    // List of spawned Towers;
+    public List<GameObject> towers;
+
+    // Spawn Points Tilemap
     public Tilemap spawnTilemap;
 
+
+    public void Reset()
+    {
+        towers.ForEach(t => Destroy(t));
+    }
 
     public void SelectTower(int id) 
     {
@@ -82,17 +90,18 @@ public class Spawner : MonoBehaviour
     {
         switch (id)
         {
-            case 0: return towers[0].GetComponent<Pink_Guy>().cost;
-            case 1: return towers[1].GetComponent<Masked_Dude>().cost;
-            case 2: return towers[2].GetComponent<Ninja_Frog>().cost;
+            case 0: return towerPrefabs[0].GetComponent<Pink_Guy>().cost;
+            case 1: return towerPrefabs[1].GetComponent<Masked_Dude>().cost;
+            case 2: return towerPrefabs[2].GetComponent<Ninja_Frog>().cost;
             default: return 0;
         }
     }
 
     void SpawnTower(Vector3 position)
     {
-        GameObject tower = Instantiate(towers[spawnID], spawnTowerRoot);
+        GameObject tower = Instantiate(towerPrefabs[spawnID], spawnTowerRoot);
         tower.transform.position = position;
+        towers.Add(tower);
         DeselectTower();
     }
 
@@ -113,5 +122,10 @@ public class Spawner : MonoBehaviour
     {
         if (spawnID == -1) return false;
         return true;
+    }
+
+    public void RevertCellState(Vector3Int pos)
+    {
+        spawnTilemap.SetColliderType(pos, Tile.ColliderType.Sprite);
     }
 }

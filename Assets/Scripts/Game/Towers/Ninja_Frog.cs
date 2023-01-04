@@ -1,42 +1,37 @@
 using System.Collections;
 using UnityEngine;
 
-public class Ninja_Frog : MonoBehaviour
+public class Ninja_Frog : Tower
 {
-    public int cost;
-    public int health;
+    //FIELDS
+    //damage
     public int damage;
+    //prefab (shooting item)
+    public GameObject prefab_shootItem;
+    //shoot interval
     public float interval;
-    // Bullet
-    public GameObject bulletPrefab;
 
-    public void Start()
+
+    //METHODS
+    //init (start the shooting interval)
+    protected override void Start()
     {
-        StartCoroutine(AttackDelay());
+        //start the shooting interval IEnum
+        StartCoroutine(ShootDelay());
     }
-
-    IEnumerator AttackDelay()
+    //Interval for shooting
+    IEnumerator ShootDelay()
     {
         yield return new WaitForSeconds(interval);
         ShootItem();
-        StartCoroutine(AttackDelay());
+        StartCoroutine(ShootDelay());
     }
-
+    //Shoot an item
     void ShootItem()
     {
-        GameObject bulletItem = Instantiate(bulletPrefab, transform);
-        bulletItem.GetComponent<BulletItem>().Init(damage);
-    }
-
-    public void LoseHealth()
-    {
-        health--;
-        if (health <= 0) Die();
-    }
-
-    public void Die()
-    {
-        Debug.Log("Pink Guy is dead");
-        Destroy(gameObject);
+        //Instantiate shoot item
+        GameObject shotItem = Instantiate(prefab_shootItem, transform);
+        //Set its values  
+        shotItem.GetComponent<BulletItem>().Init(damage);
     }
 }

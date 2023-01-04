@@ -1,26 +1,22 @@
 using System.Collections;
 using UnityEngine;
 
-public class Pink_Guy : MonoBehaviour
+public class Pink_Guy : Tower
 {
-    public int cost;
-    public int health;
     public int incomeValue;
     public float interval;
-    // Coin Image object
-    public GameObject coin;
+    public GameObject obj_coin;
 
-    public void Start()
+    protected override void Start()
     {
         StartCoroutine(Interval());
     }
+
     IEnumerator Interval()
     {
         yield return new WaitForSeconds(interval);
-        // Trigger the income increase
         IncreaseIncome();
         StartCoroutine(Interval());
-
     }
 
     public void IncreaseIncome()
@@ -29,24 +25,10 @@ public class Pink_Guy : MonoBehaviour
         StartCoroutine(CoinIndication());
     }
 
-    // UI Indication
-
     IEnumerator CoinIndication()
     {
-        coin.SetActive(true);
+        obj_coin.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        coin.SetActive(false);
-    }
-
-    public void LoseHealth()
-    {
-        health--;
-        if (health <= 0) Die();
-    }
-
-    public void Die()
-    {
-        Debug.Log("Pink Guy is dead");
-        Destroy(gameObject);
+        obj_coin.SetActive(false);
     }
 }
