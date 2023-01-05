@@ -10,6 +10,7 @@ public class Ninja_Frog : Tower
     public GameObject prefab_shootItem;
     //shoot interval
     public float interval;
+    [SerializeField] private AudioSource bulletSFX;
 
 
     //METHODS
@@ -33,5 +34,6 @@ public class Ninja_Frog : Tower
         GameObject shotItem = Instantiate(prefab_shootItem, transform);
         //Set its values  
         shotItem.GetComponent<BulletItem>().Init(damage);
+        bulletSFX.Play();
     }
 }

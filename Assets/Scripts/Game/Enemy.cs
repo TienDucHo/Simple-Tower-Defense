@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     Coroutine attackOrder;
     public Tower detectedTower;
     public bool isAttackingHome = false;
+    public AudioClip dieSFX;
+    public AudioSource hitSFX;
 
     public void Start()
     {
@@ -70,15 +72,24 @@ public class Enemy : MonoBehaviour
     {
         //Decrease health value
         health--;
+        hitSFX.Play();
         // Getting Hit Animation
         animator.SetTrigger("Hurt");
         //Check if health is zero => destroy enemy
         if (health <= 0)
         {
             GameManager.instance.enemySpawner.enemyCount--;
-            Destroy(gameObject);
+            animator.SetTrigger("Die");
+            AudioSource.PlayClipAtPoint(dieSFX, new Vector3(0, 0, -10));
+            StartCoroutine(Die());
             GameManager.instance.enemySpawner.CheckWin();
         }
+    }
+
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(0.8f);
+        Destroy(gameObject);
     }
 
     protected void OnTriggerEnter2D(Collider2D collision)
