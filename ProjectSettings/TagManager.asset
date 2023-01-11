@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Tower
   - Home
+  - CapturePoint
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 2203338601
+    locked: 0
+  - name: Foreground
+    uniqueID: 875359309
     locked: 0
   - name: Towers
     uniqueID: 3554832691

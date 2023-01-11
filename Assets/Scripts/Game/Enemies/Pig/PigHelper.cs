@@ -7,6 +7,21 @@ public class PigHelper : MonoBehaviour
     // Start is called before the first frame update
     public void FinishAttack()
     {
-        transform.parent.GetComponent<Pig>().InflictDamage();
+        GameObject target = transform.parent.GetComponent<AIStateAttack>().GetTarget();
+        if (target != null)
+        {   
+            int damage = transform.parent.GetComponentInChildren<AttackMelee>().damage;
+            DamageTaker damageTaker = target.GetComponent<DamageTaker>();
+            if (damageTaker != null)
+            {
+                damageTaker.TakeDamage(damage);
+            }
+            if (target.CompareTag("CapturePoint") == true)
+            {
+                Debug.Log("Captured");
+                Destroy(transform.parent.gameObject);
+                EventManager.TriggerEvent("Captured", null, null);
+            }
+        }
     }
 }

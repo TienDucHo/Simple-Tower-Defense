@@ -70,13 +70,13 @@ public class Spawner : MonoBehaviour
             // Get the tower cost
             int towerCost = GetTowerCost(spawnID);
             // Check if not enough currency
-            if (!GameManager.instance.currencySystem.EnoughCurrency(towerCost)) 
+            if (!GameManager.instance.currencySystem.EnoughMoney(towerCost)) 
             {
                 Debug.Log("Not enough money");
                 return;
             }
             //Reduce the currency
-            GameManager.instance.currencySystem.UseCurrency(towerCost);
+            GameManager.instance.currencySystem.UseMoney(towerCost);
             // Spawn the Tower
             SpawnTower(cellPosCenter);
             // Disable that collider

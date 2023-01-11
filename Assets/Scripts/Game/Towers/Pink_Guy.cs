@@ -22,7 +22,7 @@ public class Pink_Guy : Tower
 
     public void IncreaseIncome()
     {
-        GameManager.instance.currencySystem.GainCurrency(incomeValue);
+        GameManager.instance.currencySystem.GainMoney(incomeValue);
         StartCoroutine(CoinIndication());
     }
 

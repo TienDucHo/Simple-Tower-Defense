@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         GetComponent<HealthSystem>().ResetHealthCount();
-        GetComponent<CurrencySystem>().ResetCurrencyCount();
+        GetComponent<CurrencySystem>().ResetMoney();
         GetComponent<Spawner>().Reset();
         GetComponent<EnemySpawner>().Reset();
         gameOverOverlay.SetActive(false);

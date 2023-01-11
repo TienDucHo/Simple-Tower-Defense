@@ -43,7 +43,7 @@ public class Tower : MonoBehaviour
     protected virtual IEnumerator Die()
     {
         FindObjectOfType<Spawner>().RevertCellState(cellPosition);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
