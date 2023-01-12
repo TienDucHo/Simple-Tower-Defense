@@ -195,7 +195,7 @@ public class UIManager : MonoBehaviour
     private void GoToLevel()
     {
         CloseAllUI();
-        levelUI.SetActive(true);
+        levelUI.SetActive(true);    
         PauseGame(false);
     }
 
