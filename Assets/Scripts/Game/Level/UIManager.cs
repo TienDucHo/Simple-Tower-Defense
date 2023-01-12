@@ -87,6 +87,7 @@ public class UIManager : MonoBehaviour
                 {
                     if (res.gameObject.CompareTag("ActionIcon"))
                     {
+                        Debug.Log("Go Go power ranger");
                         hittedObj = res.gameObject;
                         break;
                     }
@@ -98,7 +99,7 @@ public class UIManager : MonoBehaviour
                     foreach (RaycastHit2D hit in hits)
                     {
                         // If this is tower collider
-                        if (hit.collider.gameObject.CompareTag("Tower"))
+                        if (hit.collider.gameObject.CompareTag("Home"))
                         {
                             hittedObj = hit.collider.gameObject;
                             break;
@@ -236,8 +237,9 @@ public class UIManager : MonoBehaviour
         LoadScene(activeScene);
     }
     
-    public void UpdateHealthUI(int currentHealth)
+    public void UpdateHealthUI()
     {
+        int currentHealth = LevelManager.instance.healthSystem.healthCount;
         Transform healthUI = levelUI.transform.Find("Health");
         //Debug.Log(healthUI);
         Transform healthText = healthUI.Find("Health Text");
@@ -245,8 +247,9 @@ public class UIManager : MonoBehaviour
         healthText.GetComponent<TMP_Text>().text =  currentHealth.ToString();
     }
 
-    public void UpdateMoneyUI(int currentMoney)
+    public void UpdateMoneyUI()
     {
+        int currentMoney = LevelManager.instance.currencySystem.currentMoney;
         Transform moneyUI = levelUI.transform.Find("Money");
         //Debug.Log(healthUI);
         Transform moneyText = moneyUI.Find("Money Text");

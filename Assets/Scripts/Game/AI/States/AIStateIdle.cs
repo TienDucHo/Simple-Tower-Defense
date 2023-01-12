@@ -15,12 +15,15 @@ public class AIStateIdle : MonoBehaviour, IAIState
     // AI behavior of this object
     private AIBehavior aiBehavior;
 
+    private EffectGainMoney effectGainMoney;
+
     /// <summary>
     /// Awake this instance.
     /// </summary>
     void Awake()
     {
         aiBehavior = GetComponent<AIBehavior>();
+        effectGainMoney = GetComponentInChildren<EffectGainMoney>();
         Debug.Assert(aiBehavior, "Wrong initial parameters");
     }
 

@@ -6,6 +6,6 @@ public class BatHelper : MonoBehaviour
 {
     public void FinishAttack()
     {
-        transform.parent.GetComponent<Bat>().InflictDamage();
+        //transform.parent.GetComponent<Bat>().InflictDamage();
     }
 }

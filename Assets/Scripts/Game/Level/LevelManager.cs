@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     // User interface manager
-    private UIManager uiManager;
+    public UIManager uiManager;
 
     // Nymbers of enemy spawners in this level
     private int spawnNumbers;
@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        //instance = this;
+        instance = this;
         uiManager = FindObjectOfType<UIManager>();
         spawnNumbers = FindObjectsOfType<SpawnPoint>().Length;
         
@@ -35,8 +35,8 @@ public class LevelManager : MonoBehaviour
         Debug.Assert(uiManager && healthSystem && currencySystem, "Wrong initial parameters");
         healthSystem.Init();
         currencySystem.Init();
-        uiManager.UpdateHealthUI(healthSystem.healthCount);
-        uiManager.UpdateMoneyUI(currencySystem.currentMoney);
+        uiManager.UpdateHealthUI();
+        uiManager.UpdateMoneyUI();
         StartCoroutine(GainMoney());
     }
 
@@ -123,7 +123,7 @@ public class LevelManager : MonoBehaviour
     {
         // Lose 1 health
         healthSystem.LoseHealth();
-        uiManager.UpdateHealthUI(healthSystem.healthCount);
+        uiManager.UpdateHealthUI();
         CheckDefeat();
         //Debug.Log("Capture");
     }
@@ -154,7 +154,7 @@ public class LevelManager : MonoBehaviour
     {
         yield return new WaitForSeconds(currencySystem.interval);
         currencySystem.GainMoney(1);
-        uiManager.UpdateMoneyUI(currencySystem.currentMoney);
+        uiManager.UpdateMoneyUI();
         StartCoroutine(GainMoney());
     }
 }

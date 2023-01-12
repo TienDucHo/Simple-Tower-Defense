@@ -16,9 +16,9 @@ public class PigHelper : MonoBehaviour
             {
                 damageTaker.TakeDamage(damage);
             }
-            if (target.CompareTag("CapturePoint") == true)
+            else if (target.CompareTag("CapturePoint") == true)
             {
-                Debug.Log("Captured");
+                //Debug.Log("Captured");
                 Destroy(transform.parent.gameObject);
                 EventManager.TriggerEvent("Captured", null, null);
             }

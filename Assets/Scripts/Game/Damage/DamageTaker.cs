@@ -5,6 +5,7 @@ using UnityEngine;
 public class DamageTaker : MonoBehaviour
 {
     // Start hitpoints
+    public Stats stats;
     public int hitpoints = 1;
     // Remaining hitpoints
     public int currentHitpoints;
@@ -23,9 +24,10 @@ public class DamageTaker : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        currentHitpoints = hitpoints;
+        stats = GetComponent<Stats>();
+        currentHitpoints = stats.health;
         sprite = GetComponentInChildren<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         Debug.Assert(sprite, "Wrong initial parameters");
     }
 
