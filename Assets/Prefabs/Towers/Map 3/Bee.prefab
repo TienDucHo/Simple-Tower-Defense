@@ -161,7 +161,7 @@ MonoBehaviour:
   hitpoints: 1
   currentHitpoints: 0
   hitDisplayTime: 0.2
-  floorPrefab: {fileID: 8066589617377079733, guid: af37c42bf90b4c741a0179f12fe76f24, type: 3}
+  floorPrefab: {fileID: 8066589617377079733, guid: d3c1ce18dc3ca7d4688be2f2d8bb4800, type: 3}
 --- !u!82 &1090906459277726143
 AudioSource:
   m_ObjectHideFlags: 0

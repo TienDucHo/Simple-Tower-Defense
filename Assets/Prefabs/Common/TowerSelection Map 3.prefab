@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77d34b0d593e754aabd9ab995634547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 4919454629076172315, guid: 15dffbb78a5d150448bd01d4e6bc5878, type: 3}
+  towerPrefab: {fileID: 4919454629076172315, guid: 4c8cd2a7231185f498d31ba148f2057b, type: 3}
 --- !u!1 &5799180953265610807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,4 +1032,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b77d34b0d593e754aabd9ab995634547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 4919454629076172315, guid: f75bd7f247419da4ba806f2eb2ee5879, type: 3}
+  towerPrefab: {fileID: 4919454629076172315, guid: e3fe77d2a2dccbc4d9f6f97bdec38840, type: 3}

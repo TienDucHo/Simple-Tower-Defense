@@ -8950,6 +8950,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   healthSystem: {fileID: 1928324327}
   currencySystem: {fileID: 1928324328}
+  thisLevel: 2
 --- !u!114 &1928324330
 MonoBehaviour:
   m_ObjectHideFlags: 0

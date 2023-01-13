@@ -555,6 +555,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   healthSystem: {fileID: 45909185}
   currencySystem: {fileID: 45909186}
+  thisLevel: 1
 --- !u!114 &45909188
 MonoBehaviour:
   m_ObjectHideFlags: 0

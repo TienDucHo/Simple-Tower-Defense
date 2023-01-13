@@ -18,6 +18,7 @@ public class LevelManager : MonoBehaviour
 
     // Singleton
     public static LevelManager instance;
+    public int thisLevel;
 
     /// <summary>
     /// Awake this instance.
@@ -149,8 +150,12 @@ public class LevelManager : MonoBehaviour
             Debug.Log(player.gameObject.GetComponent<PlayerStatus>().playerName);
             string playerName = player.gameObject.GetComponent<PlayerStatus>().playerName;
             int levelUnlocked = player.gameObject.GetComponent<PlayerStatus>().levelUnlocked;
-            PlayerPrefs.SetInt("Level"+playerName, levelUnlocked + 1);
-            player.gameObject.GetComponent<PlayerStatus>().levelUnlocked += 1;
+            if (thisLevel + 1 >= levelUnlocked && thisLevel < 9)
+            {
+                PlayerPrefs.SetInt("Level" + playerName, thisLevel + 1);
+                player.gameObject.GetComponent<PlayerStatus>().levelUnlocked = thisLevel + 1;
+            }
+            
             // Victory
             uiManager.GoToVictoryMenu();
         }

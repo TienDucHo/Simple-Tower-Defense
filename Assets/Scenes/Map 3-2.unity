@@ -5060,8 +5060,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 875359309
-  m_SortingLayer: 5
+  m_SortingLayerID: 1747214959
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -7772,6 +7772,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   healthSystem: {fileID: 1720623977}
   currencySystem: {fileID: 1720623978}
+  thisLevel: 5
 --- !u!114 &1720623980
 MonoBehaviour:
   m_ObjectHideFlags: 0

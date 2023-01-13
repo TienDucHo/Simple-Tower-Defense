@@ -90,6 +90,7 @@ MonoBehaviour:
   cooldown: 1
   arrowPrefab: {fileID: 2876019658080574393, guid: 997be69a09d47ab43a1f976de0500ae5, type: 3}
   firePoint: {fileID: 7286454810910441465}
+  stats: {fileID: 0}
 --- !u!114 &6749144793713592785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +319,7 @@ MonoBehaviour:
   hitpoints: 1
   currentHitpoints: 0
   hitDisplayTime: 0.2
-  floorPrefab: {fileID: 8066589617377079733, guid: af37c42bf90b4c741a0179f12fe76f24, type: 3}
+  floorPrefab: {fileID: 8066589617377079733, guid: d3c1ce18dc3ca7d4688be2f2d8bb4800, type: 3}
 --- !u!114 &6890102031782219592
 MonoBehaviour:
   m_ObjectHideFlags: 0
