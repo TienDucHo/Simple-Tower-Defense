@@ -6,6 +6,23 @@ public class BatHelper : MonoBehaviour
 {
     public void FinishAttack()
     {
-        //transform.parent.GetComponent<Bat>().InflictDamage();
+        AudioSource audioSource = transform.parent.GetComponent<AudioSource>();
+        audioSource.Play();
+        GameObject target = transform.parent.GetComponent<AIStateAttack>().GetTarget();
+        if (target != null)
+        {
+            int damage = transform.parent.GetComponentInChildren<AttackMelee>().damage;
+            DamageTaker damageTaker = target.GetComponent<DamageTaker>();
+            if (damageTaker != null)
+            {
+                damageTaker.TakeDamage(damage, transform.parent.gameObject);
+            }
+            else if (target.CompareTag("CapturePoint") == true)
+            {
+                EventManager.TriggerEvent("Captured", null, null);
+                EventManager.TriggerEvent("UnitDie", transform.parent.gameObject, null);
+                Destroy(transform.parent.gameObject);
+            }
+        }
     }
 }

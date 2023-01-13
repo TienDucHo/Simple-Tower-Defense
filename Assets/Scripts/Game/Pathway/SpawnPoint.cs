@@ -95,7 +95,7 @@ public class SpawnPoint : MonoBehaviour
         // If all spawned enemies are dead
         if ((nextWave == null) && (activeEnemies.Count <= 0))
         {
-            //EventManager.TriggerEvent("AllEnemiesAreDead", null, null);
+            EventManager.TriggerEvent("AllEnemiesAreDead", null, null);
             // Turn off spawner
             enabled = false;
         }

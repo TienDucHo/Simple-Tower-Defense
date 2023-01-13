@@ -14,7 +14,7 @@ public class LevelMenu : MonoBehaviour
     {
         welcomeText.text = "Chào mừng " + PlayerStatus.instance.playerName + "!\nVui lòng chọn màn chơi.";
         GameObject levelButtons = GameObject.Find("Levels");
-        int level = PlayerStatus.instance.levelUnlocked;
+        int level = PlayerPrefs.GetInt("Level" +PlayerStatus.instance.playerName);
         for (int i = 0; i <= level; i++)
         {
             Debug.Log(i);

@@ -163,6 +163,7 @@ public class AIBehavior : MonoBehaviour
     {
         if (LevelManager.IsCollisionValid(gameObject.tag, other.gameObject.tag) == true)
         {
+            //Debug.Log(gameObject.tag + " " + other.gameObject.tag); 
             currentState.TriggerStay(my, other);
         }
     }

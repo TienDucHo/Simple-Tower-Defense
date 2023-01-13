@@ -14,14 +14,18 @@ public class AttackRanged : MonoBehaviour, IAttack
     public Transform firePoint;
 
     // Animation controller for this AI
-    private Animation anim;
+    private Animator animator;
     // Counter for cooldown calculation
     private float cooldownCounter;
 
+    public Stats stats;
+
     void Awake()
     {
-        anim = GetComponentInParent<Animation>();
+        animator = transform.parent.GetComponentInChildren<Animator>();
         cooldownCounter = cooldown;
+        stats = transform.parent.GetComponent<Stats>();
+        damage = stats.damage;
     }
 
     // Update is called once per frame
@@ -48,13 +52,13 @@ public class AttackRanged : MonoBehaviour, IAttack
         {
             // Create arrow
             GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
-            /*IBullet bullet = arrow.GetComponent<IBullet>();
+            IBullet bullet = arrow.GetComponent<IBullet>();
             bullet.SetDamage(damage);
             bullet.Fire(target);
-            if (anim != null)
+            if (animator != null)
             {
-                anim.Play("AttackRanged");
-            }*/
+                animator.SetTrigger("Attack");
+            }
         }
     }
 }

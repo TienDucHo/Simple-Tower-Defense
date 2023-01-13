@@ -1,10 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Area Of Effect damage on destroing.
-/// </summary>
 public class AOE : MonoBehaviour
 {
     // Area radius

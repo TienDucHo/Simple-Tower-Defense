@@ -97,8 +97,8 @@ public class Tower : MonoBehaviour
         if (obj == gameObject) // This tower is clicked
         {
             // Show attack range
-            //ShowRange(true);
-            if (activeTowerSelection == null)
+            ShowRange(true);
+            if (obj.CompareTag("Home") && activeTowerSelection == null)
             {
                 // Open building tree if it is not
                 OpenTowerSelection();
@@ -107,7 +107,7 @@ public class Tower : MonoBehaviour
         else // Other click
         {
             // Hide attack range
-            //ShowRange(false);
+            ShowRange(false);
             // Close active building tree
             CloseBuildingTree();
         }
@@ -123,6 +123,18 @@ public class Tower : MonoBehaviour
         else // Unpaused
         {
             bodyCollider.enabled = true;
+        }
+    }
+
+    /// <summary>
+    /// Display tower's attack range.
+    /// </summary>
+    /// <param name="condition">If set to <c>true</c> condition.</param>
+    private void ShowRange(bool condition)
+    {
+        if (range != null)
+        {
+            range.SetActive(condition);
         }
     }
 }

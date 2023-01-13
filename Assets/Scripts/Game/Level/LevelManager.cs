@@ -145,6 +145,12 @@ public class LevelManager : MonoBehaviour
         // Enemies dead at all spawners
         if (spawnNumbers <= 0)
         {
+            GameObject player = GameObject.FindGameObjectWithTag("player");
+            Debug.Log(player.gameObject.GetComponent<PlayerStatus>().playerName);
+            string playerName = player.gameObject.GetComponent<PlayerStatus>().playerName;
+            int levelUnlocked = player.gameObject.GetComponent<PlayerStatus>().levelUnlocked;
+            PlayerPrefs.SetInt("Level"+playerName, levelUnlocked + 1);
+            player.gameObject.GetComponent<PlayerStatus>().levelUnlocked += 1;
             // Victory
             uiManager.GoToVictoryMenu();
         }

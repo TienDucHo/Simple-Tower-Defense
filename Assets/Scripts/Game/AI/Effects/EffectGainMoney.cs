@@ -25,7 +25,6 @@ public class EffectGainMoney : MonoBehaviour, IEffect
     {
         yield return new WaitForSeconds(cooldown);
         animator.SetTrigger("Effect");
-        Debug.Log("Effect");
         LevelManager.instance.currencySystem.GainMoney(profit);
         LevelManager.instance.uiManager.UpdateMoneyUI();
         StartCoroutine(GainMoney());

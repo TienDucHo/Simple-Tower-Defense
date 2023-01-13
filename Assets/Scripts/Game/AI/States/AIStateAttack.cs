@@ -80,7 +80,7 @@ public class AIStateAttack : MonoBehaviour, IAIState
 
     public void OnStateEnter(string previousState, string newState)
     {
-        //Debug.Log("Enter Attack State");
+        //Debug.Log(gameObject + " Enter Attack State");
     }
 
     public void OnStateExit(string previousState, string newState)
@@ -89,7 +89,7 @@ public class AIStateAttack : MonoBehaviour, IAIState
         if (animator != null)
         {
             // Stop animation
-            animator.SetBool("IsAttacking", false);
+            animator.SetTrigger("Attack");
         }
     }
 
@@ -118,6 +118,7 @@ public class AIStateAttack : MonoBehaviour, IAIState
                 }
                 else if (my.name == "RangedAttack")
                 {
+                    //Debug.Log("They are in");
                     if (rangedAttack != null)
                     {
                         if ((meleeAttack == null) 

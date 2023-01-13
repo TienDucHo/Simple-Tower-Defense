@@ -99,7 +99,7 @@ public class UIManager : MonoBehaviour
                     foreach (RaycastHit2D hit in hits)
                     {
                         // If this is tower collider
-                        if (hit.collider.gameObject.CompareTag("Home"))
+                        if (hit.collider.gameObject.CompareTag("Home") || hit.collider.gameObject.CompareTag("Tower"))
                         {
                             hittedObj = hit.collider.gameObject;
                             break;
@@ -154,7 +154,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void GoToMainMenu()
     {
-        LoadScene("MainMenu");
+        LoadScene("Menu");
     }
 
     /// <summary>

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2174194935614889608}
   - component: {fileID: 7639147929943461356}
   - component: {fileID: 2366513710940425706}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -134,7 +134,9 @@ GameObject:
   - component: {fileID: 5616765494753530988}
   - component: {fileID: 1558748496759932681}
   - component: {fileID: 6647163028740203695}
-  m_Layer: 7
+  - component: {fileID: 2213221751990127079}
+  - component: {fileID: 4908561428608389545}
+  m_Layer: 9
   m_Name: Pig
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -173,7 +175,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!50 &8913683040468528310
 Rigidbody2D:
   serializedVersion: 4
@@ -215,7 +217,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.60237736
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -353,6 +355,38 @@ MonoBehaviour:
   useTargetPriority: 0
   agressiveAiState: 
   passiveAiState: AIStatePatrol
+--- !u!114 &2213221751990127079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868944193882958709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fad8216ecaf3f41a4690d59d426549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  hitpoints: 1
+  currentHitpoints: 0
+  hitDisplayTime: 0.2
+  floorPrefab: {fileID: 0}
+--- !u!114 &4908561428608389545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868944193882958709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42072a0ea0f69ab47b281bb421b34ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  damage: 1
+  price: 0
 --- !u!1 &6065705341749049543
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,9 +400,9 @@ GameObject:
   - component: {fileID: 7468910738006606806}
   - component: {fileID: 1830312099951575304}
   - component: {fileID: 1084767482845800962}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: MeleeAttack
-  m_TagString: Enemy
+  m_TagString: AttackRadius
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,7 +458,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.65
+  m_Radius: 0.6
 --- !u!114 &1830312099951575304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,3 +488,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   cooldown: 1
+  stats: {fileID: 0}

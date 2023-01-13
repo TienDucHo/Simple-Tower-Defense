@@ -52,6 +52,7 @@ public class AIStateIdle : MonoBehaviour, IAIState
     /// </summary>
     /// <param name="my">My.</param>
     /// <param name="other">Other.</param>
+    /// 
     public void TriggerEnter(Collider2D my, Collider2D other)
     {
 

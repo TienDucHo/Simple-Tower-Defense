@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class PlayerStatus : MonoBehaviour
     void Awake()
     {  
         instance = this;
+        //playerName = PlayerPrefs.GetString("Name");
+        levelUnlocked = PlayerPrefs.GetInt("Level" + playerName);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadStats()
@@ -20,6 +24,9 @@ public class PlayerStatus : MonoBehaviour
 
     public void SaveStats()
     {
-        PlayerPrefs.SetInt("Level" + playerName, levelUnlocked);
+        Debug.Log(playerName);
+        //PlayerPrefs.SetString("Name", playerName);
+        PlayerPrefs.SetInt("Level" + playerName, levelUnlocked + 1);
+        PlayerPrefs.Save();
     }
 }

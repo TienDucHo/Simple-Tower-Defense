@@ -13,6 +13,7 @@ public class AttackMelee : MonoBehaviour, IAttack
     private Animator animator;
     // Counter for cooldown calculation
     private float cooldownCounter;
+    public Stats stats;
 
     /// <summary>
     /// Awake this instance.
@@ -21,6 +22,8 @@ public class AttackMelee : MonoBehaviour, IAttack
     {
         animator = transform.parent.GetComponentInChildren<Animator>();
         cooldownCounter = cooldown;
+        stats = transform.parent.GetComponent<Stats>();
+        damage = stats.damage;
         Debug.Assert(animator != null);
     }
 
@@ -59,12 +62,6 @@ public class AttackMelee : MonoBehaviour, IAttack
         {
             // If target can receive damage
             animator.SetTrigger("Attack");
-            /*DamageTaker damageTaker = target.GetComponent<DamageTaker>();
-            if (damageTaker != null)
-            {
-                damageTaker.TakeDamage(damage);
-                
-            }*/
         }
     }
 }

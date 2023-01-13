@@ -7,6 +7,8 @@ public class PigHelper : MonoBehaviour
     // Start is called before the first frame update
     public void FinishAttack()
     {
+        AudioSource audioSource = transform.parent.GetComponent<AudioSource>();
+        audioSource.Play();
         GameObject target = transform.parent.GetComponent<AIStateAttack>().GetTarget();
         if (target != null)
         {   
@@ -14,13 +16,14 @@ public class PigHelper : MonoBehaviour
             DamageTaker damageTaker = target.GetComponent<DamageTaker>();
             if (damageTaker != null)
             {
-                damageTaker.TakeDamage(damage);
+                damageTaker.TakeDamage(damage, transform.parent.gameObject);
             }
             else if (target.CompareTag("CapturePoint") == true)
             {
                 //Debug.Log("Captured");
                 Destroy(transform.parent.gameObject);
                 EventManager.TriggerEvent("Captured", null, null);
+                EventManager.TriggerEvent("UnitDie", gameObject, null);
             }
         }
     }

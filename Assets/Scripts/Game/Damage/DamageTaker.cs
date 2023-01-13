@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DamageTaker : MonoBehaviour
 {
@@ -17,7 +18,14 @@ public class DamageTaker : MonoBehaviour
     // Visualisation of hit
     private bool hitCoroutine;
 
+    private bool isTower;
+
+    public GameObject floorPrefab;
+
+    private EffectReflectDamage effectReflectDamage;
+
     Animator animator;
+
 
     /// <summary>
     /// Awake this instance.
@@ -28,6 +36,8 @@ public class DamageTaker : MonoBehaviour
         currentHitpoints = stats.health;
         sprite = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponentInChildren<Animator>();
+        effectReflectDamage= GetComponentInChildren<EffectReflectDamage>();
+        if (tag == "Tower") isTower = true;
         Debug.Assert(sprite, "Wrong initial parameters");
     }
 
@@ -35,18 +45,26 @@ public class DamageTaker : MonoBehaviour
     /// Take damage.
     /// </summary>
     /// <param name="damage">Damage.</param>
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject from = null)
     {
+        if (effectReflectDamage != null)
+        {
+            Debug.Log("Reflect Damage");
+            if (from != null) {
+                DamageTaker enemyDamageTaker = from.GetComponent<DamageTaker>();
+                if (enemyDamageTaker != null)
+                {
+                    animator.SetTrigger("Attack");
+                    enemyDamageTaker.TakeDamage(stats.damage, from);
+                }
+            }
+            
+        }
         if (currentHitpoints > damage)
         {
             // Still alive
             currentHitpoints -= damage;
-            // If no coroutine now
-            if (hitCoroutine == false)
-            {
-                // Damage visualisation
-                StartCoroutine(DisplayDamage());
-            }
+            animator.SetTrigger("Hurt");
         }
         else
         {
@@ -62,22 +80,15 @@ public class DamageTaker : MonoBehaviour
     public void Die()
     {
         EventManager.TriggerEvent("UnitDie", gameObject, null);
+        //EventManager.TriggerEvent("AllEnemiesAreDead", gameObject, null);
+        Transform old = transform;
+        Transform parent = transform.parent;
         Destroy(gameObject);
-    }
-
-    /// <summary>
-    /// Damage visualisation.
-    /// </summary>
-    /// <returns>The damage.</returns>
-    IEnumerator DisplayDamage()
-    {
-        hitCoroutine = true;
-        float counter;
-        for (counter = 0f; counter < hitDisplayTime; counter += Time.deltaTime)
+        if (isTower)
         {
-            yield return new WaitForEndOfFrame();
+            GameObject newTower = Instantiate(floorPrefab, parent);
+            newTower.transform.position = old.position;
+            newTower.transform.rotation = old.rotation;
         }
-        animator.SetTrigger("Hurt");
-        hitCoroutine = false;
     }
 }

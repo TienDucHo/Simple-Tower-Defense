@@ -14,6 +14,8 @@ TagManager:
   - ActionIcon
   - Defender
   - LevelUI
+  - AttackRadiusBig
+  - player
   layers:
   - Default
   - TransparentFX
@@ -23,12 +25,12 @@ TagManager:
   - UI
   - Ground
   - SpawnPoints
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Tower
+  - Enemy
+  - Bullet
+  - AttackEnemy
+  - AttackAlly
+  - Foreground
   - 
   - 
   - 
@@ -55,13 +57,16 @@ TagManager:
     uniqueID: 2203338601
     locked: 0
   - name: Foreground
-    uniqueID: 875359309
+    uniqueID: 1747214959
     locked: 0
   - name: Towers
     uniqueID: 3554832691
     locked: 0
   - name: Enemies
     uniqueID: 4059416769
+    locked: 0
+  - name: Decoration
+    uniqueID: 875359309
     locked: 0
   - name: UI
     uniqueID: 1589437805
